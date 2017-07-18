@@ -17,7 +17,7 @@ def read(fname,
 
 
 setup(name="django-mailhide",
-      version="1.0.0",
+      version="1.1.0",
       author="Gabriel Paul 'Cley Faye' Risterucci",
       author_email="gabriel.risterucci@gmail.com",
       description=("Provide template tags to protect e-mail in a Django "
