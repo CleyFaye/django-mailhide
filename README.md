@@ -20,6 +20,9 @@ You must insert the mailhide application as you would any other Django applicati
 
 Also set the reCAPTCHA API key and shared secret in Django settings (properties RECAPTCHA\_API\_KEY and RECAPTCHA\_SHARED\_SECRET).
 
+Finally, add the mailhide.urls module to your list of URLs (usually using include() from Django).
+The Javascript expect to find the API at the following address: "/mailhide/api/v1/mail", so your include must use the "mailhide" prefix.
+
 
 Usage
 -----
