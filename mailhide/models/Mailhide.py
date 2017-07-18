@@ -1,11 +1,9 @@
 """Class for managing mailhide association"""
-from logging import getLogger
 from math import floor
 from random import random
 from django.utils.translation import ugettext as _
 from django.db import (models,
                        IntegrityError)
-logg = getLogger(__name__)
 
 
 MODEL_NAME = _('Adresse mailhide')
@@ -18,7 +16,15 @@ FIELD_KEY_HELP = _('Clé correspondante au mail')
 
 
 class Mailhide(models.Model):
-    """An email address protected using reCAPTCHA."""
+    """An email address protected using reCAPTCHA.
+
+    Fields
+    ------
+    address : models.CharField
+        The e-mail address to protect
+    key : models.CharField
+        The key to identify the e-mail address
+    """
     class Meta:
         app_label = 'mailhide'
         ordering = ['address']
@@ -35,7 +41,7 @@ class Mailhide(models.Model):
                                unique=True)
     key = models.CharField(verbose_name=FIELD_KEY_VERBOSE,
                            help_text=FIELD_KEY_HELP,
-                           max_length=100,
+                           max_length=10,
                            null=False,
                            blank=False,
                            unique=True)
@@ -44,7 +50,30 @@ class Mailhide(models.Model):
         return '%s' % self.address
 
     @classmethod
-    def create(cls, address):
+    def get(cls, address):
+        """Return an instance of Mailhide for the given address.
+
+        Parameters
+        ----------
+        address : string
+            The e-mail address to protect.
+
+
+        Returns
+        -------
+        Mailhide
+            An instance of Mailhide representing the entry
+
+        Notes
+        -----
+        If an existing entry is available, it is returned. Otherwise a new entry
+        is created and returned.
+        """
+        try:
+            return cls.objects.get(address=address)
+        except cls.DoesNotExist:
+            pass
+        # This is a safeguard, but should never happen
         iterations_left = 100
         while True:
             key = ''.join([
