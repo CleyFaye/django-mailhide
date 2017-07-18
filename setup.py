@@ -31,6 +31,7 @@ setup(name="django-mailhide",
                 'mailhide.models',
                 'mailhide.templatetags'],
       include_package_data=True,
+      install_requires=['pycaptcha'],
       long_description=read('README.md'),
       python_requires='>=3',
       classifiers=[
