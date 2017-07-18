@@ -1,0 +1,1 @@
+from .MailResource import MailResource
