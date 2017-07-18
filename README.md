@@ -10,9 +10,15 @@ To perform server-side checks, the [pycaptcha](https://repos.cleyfaye.net/trac/p
 It also requires a valid reCAPTCHA API key.
 
 
-Configuration
--------------
-Set the reCAPTCHA API key and shared secret in Django settings (properties RECAPTCHA\_API\_KEY and RECAPTCHA\_SHARED\_SECRET).
+Installation and Configuration
+------------------------------
+You must insert the mailhide application as you would any other Django application, in the INSTALLED\_APPS property:
+
+    INSTALLED\_APPS = [some.apps,
+                       mailhide.MailHideConfig,
+                       some.other.apps]
+
+Also set the reCAPTCHA API key and shared secret in Django settings (properties RECAPTCHA\_API\_KEY and RECAPTCHA\_SHARED\_SECRET).
 
 
 Usage
