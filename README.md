@@ -23,6 +23,8 @@ Also set the reCAPTCHA API key and shared secret in Django settings (properties 
 Finally, add the mailhide.urls module to your list of URLs (usually using include() from Django).
 The Javascript expect to find the API at the following address: "/mailhide/api/v1/mail", so your include must use the "mailhide" prefix.
 
+This project assume that the static files in "mailhide/static" will get collected (for example using "manage.py collectstatic") and that the template will be looked up in "mailhide/templates".
+If that's not the case, you'll have to copy the file were appropriate.
 
 Usage
 -----
