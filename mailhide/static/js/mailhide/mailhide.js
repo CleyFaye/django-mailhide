@@ -9,7 +9,7 @@
  */
 var mailhide = mailhide || {
     /** Actual URL that will return the e-mail address after checking the reCAPTCHA challenge */
-    RESULT_URL: 'mailhide/api/v1/mail',
+    RESULT_URL: '/mailhide/api/v1/mail',
     /** The element that triggered the reCAPTCHA challenge */
     REQUESTED_ELEMENT: null,
     /** Flag to indicate we're waiting for a reply from the reCAPTCHA code */
