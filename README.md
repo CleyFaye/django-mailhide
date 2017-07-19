@@ -3,6 +3,8 @@ Django-mailhide
 
 The mailhide application allow easy protection of e-mail addresses using reCAPTCHA.
 
+This package is not endorsed by the Django team in any way.
+
 
 Prerequisites
 -------------
